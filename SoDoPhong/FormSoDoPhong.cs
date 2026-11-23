@@ -130,17 +130,11 @@ namespace HotelManagement.SoDoPhong
         private void btnDatPhong_Click(object sender, EventArgs e)
         {
             string? maPhong = MaPhongDangChon(); // Phòng đang chọn trong lưới (có thể null)
-            // Khi đã tạo FormDatPhong, thay MessageBox bên dưới bằng:
-            // using (var fDatPhong = new FormDatPhong())
-            // {
-            //     // fDatPhong.MaPhong = maPhong; // nếu cần truyền mã phòng đang chọn
-            //     fDatPhong.ShowDialog();
-            // }
-            // TaiLaiDanhSach(); // đặt xong thì tải lại trạng thái các phòng
-            MessageBox.Show(
-                "Chức năng đặt phòng đang được xây dựng."
-                + (maPhong != null ? Environment.NewLine + "Phòng đang chọn: " + maPhong : ""),
-                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var fDatPhong = new FormDatPhong())
+            {
+                fDatPhong.ShowDialog();
+            }
+            TaiLaiDanhSach();
         }
 
         // ================= Các hàm hỗ trợ (viết thêm) =================
